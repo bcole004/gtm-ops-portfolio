@@ -14,15 +14,15 @@ The through-line: turning organizations that run on intuition and tribal knowled
 ## Portfolio Contents
 
 ### AI-Native GTM Tools
-- **[GTM Agent Lab](gtm-agent-lab/RevOps_AI_Lab.jsx)** — Interactive learning environment for AI-native go-to-market concepts. Five modules covering lead qualification agent design, eval harness, orchestration, vendor mapping, and build vs. activate decision framework. Built in React with live Anthropic API calls.
-- **TPS Opportunity Agent** — Two-layer agentic architecture (Copilot Studio + deterministic gap detector) built to surface at-risk opportunities across a 1,000-person technical pre-sales organization influencing $800M in new ARR.
+- **[GTM Agent Lab](gtm-agent-lab/RevOps_AI_Lab.jsx)** — Interactive learning environment for AI-native GTM concepts. Five modules: lead qualification agent design, eval harness, orchestration, vendor mapping, and build vs. activate decision framework. Built in React with live Anthropic API calls.
+- **TPS Opportunity Agent** — Two-layer agentic architecture (Copilot Studio + deterministic gap detector) that surfaces at-risk opportunities across a field organization. Built for a 1,000-person technical pre-sales org influencing $800M in new ARR. (Write-up in progress)
 
 ### Case Studies
-- **[TPS Central: Revenue Intelligence & Operating System](case-studies/TPS-Central-Portfolio-Reference.md)** — Full architecture and operating model reference covering the DDOM data lake, NBA engine design, AI agent strategy, KPI scorecard, and three-plane Revenue Intelligence architecture. Consolidated from six internal documents across three years of build.
+- **[TPS Central: Revenue Intelligence & Operating System](case-studies/TPS-Central-Portfolio-Reference.md)** — Full architecture and operating model reference: DDOM data lake, NBA engine design, AI agent strategy, KPI scorecard, and three-plane Revenue Intelligence architecture. Consolidated from six internal documents across three years of build.
 
 ### Operating Frameworks
-- **Operating Loop Model** — End-to-end revenue operating system: strategy → operating model → execution → data → governance. *(Coming soon)*
-- **DDOM Infrastructure** — Data-Driven Operating Model buildout for enterprise technical pre-sales. *(Coming soon)*
+- **Operating Loop Model** — The governing framework behind all work in this portfolio. End-to-end revenue operating system connecting strategy, operating model, execution, data, and governance. (Write-up in progress)
+- **DDOM Infrastructure** — Data-Driven Operating Model buildout for enterprise technical pre-sales. Surfaced a 2.6x lift in technical win rates that was previously invisible to the business. (Write-up in progress)
 
 ---
 
