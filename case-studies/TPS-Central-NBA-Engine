@@ -1,0 +1,72 @@
+TPS Central: NBA Engine Design
+Case Study | Adobe Technical Pre-Sales
+Beckie Cole — Director, Strategy & Business Operations, Technical Pre-Sales
+---
+The Problem
+Tech Drivers manage complex deal portfolios with limited time. Critical validation steps get missed — not because people don't know the process, but because there is no system prompting the right action at the right time.
+Three data points framed the build case:
+40% of deals at Stage 5+ lacked a started Tech Case at a stage where comparable won deals had one completed
+3.2 average touchpoint types missing vs. the won-deal pattern at the same GNARR band and stage
+62% of high-risk deals had no documented risk mitigation plan despite having identified technical blockers
+The operating model was well-defined. The data was already in TPS Central. What was missing was the intelligence layer connecting the two.
+---
+The Revenue Formula
+> **Revenue = Activity Volume x Signal Quality x Conversion Rate x Deal Size**
+Each term maps directly to an NBA engine capability.
+Component	Definition	NBA Engine Mapping
+Activity Volume	Customer engagement that creates opportunity momentum	NBA recommends next touchpoint based on won-deal sequences
+Signal Quality	Completeness and accuracy of the 9 Tech Driver fields	Gap detector ensures validation fields are current at each stage
+Conversion Rate	Validated signals that accelerate deal progression	Pattern matcher identifies high-correlation engagement types
+Deal Size	GNARR / ASV banding used for prioritization	GNARR weighting surfaces largest deals first in FLM views
+The keystone gap: Signal Quality depends on manual touchpoint logging. Inverting this — so agents author touchpoints and humans govern exceptions — is the asymmetric architectural move that unlocks the rest of the formula.
+Signal Classes
+Signal Class	Construct	Use
+Activity volume	22 touchpoint types, sequences	Next-touchpoint recommendation; momentum
+Signal quality	9 TD validation fields, stage-gate completeness	Gap detection; hygiene; data quality
+Technical progression	Tech Fit / Win / Risk / Case state vs. stage	Pipeline technical health; deal-level progression
+Conversion	Touchpoint-sequence to stage-transition correlation	Pattern matching to won-deal benchmarks
+Deal size	GNARR / ASV bands	Prioritization weighting in FLM views
+Capacity / fit	Assignments, EA-vs-SC criteria, team load	Reassignment recommendations; coverage
+---
+Engine Design
+A Workfront Fusion scenario reading from the DPASS (TPS DDOM) data lake. No new platforms or data stores required. Three sub-modules process in sequence.
+Gap Detector
+Rule-based. No ML required. Compares each deal's current field state against what the operating model requires at that sales stage. Stage 5 with Opp Tech Case = "Not Started" emits an action. Always-on rules apply regardless of stage: Tech Risk rated High with empty mitigation field, GNARR exceeding $3M with Expert SC rather than EA assigned.
+Pattern Matcher
+Historical benchmark analysis. Segments closed-won deals into cohorts by GNARR band, product mix, and industry vertical. Extracts the touchpoint sequence at each stage. Identifies high win-rate correlation touchpoint types missing from the current deal. Example: 83% of won $1-3M deals at Stage 5 had an Architecture Review completed. Benchmarks built as a one-time PowerBI analysis, stored as reference tables, recalibrated quarterly in Phase 3.
+Risk Scorer
+Urgency weighting. Evaluates proximity to close quarter, current tech risk level, and whether documented blockers have a resolution plan. Outputs a time-pressure multiplier that adjusts the final priority score.
+---
+Scoring Formula
+Priority = Impact x Urgency x (1/Effort) x GNARR weight
+Factor	What It Measures	Example Values
+Impact	How much the action moves the deal if completed	Closes validation gap = 0.9, Matches won pattern = 0.7, Hygiene = 0.3
+Urgency	Time pressure from close quarter and risk level	CQ close + high risk = 1.0, No pressure = 0.2
+1/Effort	Inverse of effort required	Update a field = 0.1, Schedule meeting = 0.4, Run a POC = 0.9
+
+GNARR weight	Slight multiplier for larger deals	$4.7M deal = 1.05x, $310K deal = 1.00x
+Quick wins surface first — low-effort, high-impact actions the Tech Driver can complete this week. The system drives action rather than creating a backlog of aspirational recommendations.
+---
+Where Intelligence Sits
+The risk across three execution substrates (Fusion / Copilot Studio / MCP) is duplicated intelligence. Resolved by assigning each job exactly one home.
+Job	Home	Rule
+Compute (gap rules, pattern benchmarks, risk scoring)	NBA engine	One brain. The only place intelligence is calculated.
+Define (TD fields, touchpoint types, stage-gates)	Canonical knowledge base	Authored once; referenced by NBA rules, agents, and MCP — never re-authored per surface.
+Reason / converse (NLU, answer composition)	Copilot agents	Reason about language, not priorities. Read NBA output; never rank.
+Access / transport	MCP server	The doorway, not the brain. Exposes NBA outputs and the knowledge base.
+The principle: compute once (NBA), define once (knowledge base), expose everywhere (MCP), deliver conversationally (agents) — never recompute downstream.
+If you changed a stage-gate tomorrow, you should edit exactly two things — NBA logic and the one definition. If it is four, intelligence has leaked.
+---
+Projected Impact
+Metric	Target	Mechanism
+Tech Win rate	+15%	Gaps caught and acted on before they become blockers
+Gap detection time	-40%	Automated detection replaces manual weekly review
+FLM deal review prep	2x efficiency	Pre-built action summary replaces manual aggregation
+TD field completeness	+25%	Monday/Friday nudges close gaps on missing data points
+---
+Implementation Phases
+Phase 1: Gap Detector (Weeks 1-4) — Rule-based Fusion automations only. No ML. Stage-gate rules, action card custom object in Workfront, notification routing, pilot team deployment.
+Phase 2: Pattern Matcher (Weeks 5-10) — One-time historical analysis of closed-won deals in PowerBI to build touchpoint benchmarks. FLM NBA Action Center dashboard.
+Phase 3: Feedback Loop (Weeks 11-16) — Completion tracking, outcome correlation analysis, quarterly weight recalibration. Audit log tagged to NBA action IDs feeds model improvement.
+---
+June 2026 | Built by Beckie Cole, Director of Strategy and Business Operations, Technical Pre-Sales, Adobe
