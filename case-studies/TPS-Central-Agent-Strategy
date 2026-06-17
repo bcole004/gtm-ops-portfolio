@@ -1,0 +1,105 @@
+TPS Central: AI Agent Strategy
+Case Study | Adobe Technical Pre-Sales
+Beckie Cole — Director, Strategy & Business Operations, Technical Pre-Sales
+---
+The Shift
+TPS Ops was the intermediary between data and decisions — assembling reports, answering platform questions, responding to support requests, and facilitating leadership cadences. This proposal eliminates that intermediary role entirely.
+GTM leaders self-serve intelligence. Tech Drivers get real-time deal guidance. Platform questions get instant answers. The team shifts from producing intelligence to designing the systems that produce it.
+Capacity recovered: 25-40 hours/week redeployed from reporting and help-desk work to signal design and strategic analysis.
+---
+Three Agents, One Platform
+All four deliverables run on a single stack: Copilot Studio for AI reasoning and conversational interfaces, Power Automate for data connectivity and system writes, SharePoint for durable artifact storage. No new platforms, no new auth, no new maintenance burden.
+Deliverable	What It Does	Who It Serves
+TPS Central Agent	Keeps TPS Central current; surfaces real-time deal guidance	Tech Drivers / ICs
+Janet — Ask Janet	Answers GTM leaders' operational questions grounded in live data	FLMs, Directors, SLMs
+TPS Central Support Agent	Answers "how do I" questions instantly across 93 documented intents	Everyone
+Friday GTM Briefing Package	Automated weekly briefing deck + Excel workbooks per vertical	GTM Leadership
+Three agents, not four. Early thinking explored a separate "TPS Action Agent" for next best actions. That capability already lives across two agents: the TPS Central Agent surfaces deal-level actions to Tech Drivers, Janet surfaces portfolio-level actions to leadership. A fourth agent creates confusion, not capability.
+Three agents, not two. Collapsing Janet and the Support Agent would conflate two distinct jobs: "what's happening with my business" vs. "how do I use this system." Different knowledge bases, different audiences, different answer patterns.
+---
+TPS Central Agent
+The Tech Driver's AI-powered interface for keeping TPS Central current and getting real-time deal guidance. Design principle: input + feedback agent. Makes it easy to put data in and immediately returns value. Every update improves the data powering Janet, the Support Agent, and the Friday Package — a flywheel where all agents make each other more valuable.
+Evolution Path
+Layer	Capability	Timeline
+Layer 1: Touchpoint Logging	Reads TD calendar, classifies against 22 touchpoint types, resolves to correct opp, writes to Workfront	Weeks 1-4
+Layer 2: TD Field Updates	Interprets natural language to update 9 TD validation fields	Weeks 5-8
+Layer 3: NBA Read-Back	After updates, checks for open NBA actions and surfaces top recommendation	Weeks 9-12
+Layer 4: Full Agent	Request queries, document context, deal prep. Primary operating interface.	Q2+
+Example Interaction (Layer 3)
+> **Tech Driver:** Just finished the architecture review with Globex. Tech fit is confirmed — aligned on AEP + GenStudio. Seeing risk around their legacy integration layer though.
+>
+> **Agent:** Got it. Logged: Architecture Review touchpoint on DR-4521 (Globex Corp, $2.1M), Opp Tech Fit Confirmed, Opp Architecture Design Complete, Opp Tech Risk High. Since Tech Risk is now High with no mitigation plan, your next best action is to document the risk mitigation path. This deal closes in 6 weeks — time-sensitive. Want me to help draft the summary?
+One conversation. Four system writes. One forward-looking recommendation. Zero time in the Workfront UI.
+---
+Janet — Ask Janet Agent
+The always-available operational analyst for GTM leadership. Design principle: output + insight agent. Reads data, returns contextual narrative answers grounded in TPS operating model rules. Tells you what a number means and what to do about it.
+Category	Example Questions	Data Source
+Pipeline and Deals	Which $1M+ deals stalled? What's my pipeline by close quarter?	D365 CRM + Workfront TD fields
+Team and Capacity	Who's overloaded? What's our request queue depth?	Workfront requests + assignments
+TD Coverage	Coverage gap in financial services? EAs on the right deals?	Workfront TD assignments + EA/SC criteria
+Adoption and Hygiene	Team hygiene score? Who hasn't updated this week?	Workfront field completion + touchpoint logs
+Actions and Priorities	What should I focus on this week? Which deals need attention?	NBA actions + operating model rules
+Trends	This quarter vs. last? Touchpoint volume trending up?	Historical SharePoint archives
+Phase 1 reads Friday Package SharePoint artifacts — a configuration exercise, not a development project. Phase 2 goes live-API when adoption proves out at 50+ questions/week. Same @mention, same questions. Only the data freshness improves.
+---
+TPS Central Support Agent
+The automated help desk for TPS Central. Answers "how do I use this system" questions instantly, with role-aware routing and escalation when confidence is low. Design principle: enablement agent. Different job than Janet (intelligence) and the TPS Central Agent (input). Same platform, different knowledge base, different answer pattern.
+The knowledge base is already built — the most deployment-ready component in the strategy:
+Asset	Coverage
+4 Job Aid JSON files (GSV, Manager, Account Management, Reporting)	93 intents, ~400 trigger phrases
+Master Routing Index	Role-context routing, shared topic disambiguation, fallback logic
+Bot Response Schema	Standardized output: source, matched intent, canonical answer, escalation path
+TPS Central Knowledge Base	Workfront objects, touchpoint types, TD fields, sales cycle, operating model
+Deployed to #tpscentral-support in Slack. Estimated 1-2 weeks from knowledge base loaded to pilot. Fastest win in the roadmap.
+Example routing:
+Question	Routed To	Answer
+How do I reassign a Tech Driver?	Manager Job Aid	Steps to change Project Owner with field instructions
+What's the difference between Tech Case and Tech Fit?	Manager Job Aid (TD Fields)	Definitions, when to update, stage-gate relationship
+How do I submit a VPW request?	Account Management	Step-by-step with assignment guidance
+My SV request is stuck — what do I do?	GSV Job Aid	Status definitions, escalation path, dashboard check
+---
+Friday GTM Briefing Package
+Automated weekly delivery: one branded briefing deck plus two Excel workbooks per GTM vertical, every Friday at 5pm local. Zero human touch. Slack-first with SharePoint archive. The Slack message is the executive summary. Deck and Excels attached for drill-down. SharePoint files feed Janet's grounded knowledge.
+Briefing deck (~10-12 slides):
+Section	Content
+Executive View	4 headline KPIs with week-over-week delta, AI-generated narrative summary
+$1M+ Pipeline	Deal table by urgency — GNARR, Stage, TD, Tech Fit/Win/Risk, status delta. Stalled deals flagged.
+Tech Driver Review	TD coverage matrix. Aging TDs. EA vs. SC alignment flags.
+Request Health	Requests by status. Load balance heat map. Aging distribution.
+Adoption and Hygiene	Field completion for all 9 TD fields. Touchpoint frequency. Team heat map.
+Actions and Focus	Top 3-5 actions for next week with owner and due date.
+Capacity recovery:
+Activity	Hours Recovered
+Weekly briefing packages	15-20+ hrs/week
+Ad hoc leadership requests	5-10 hrs/week
+Support channel answering	5-8 hrs/week
+TD hygiene follow-up	2-4 hrs/week
+---
+The Flywheel
+The four deliverables are expressions of one intelligence system, not four separate tools.
+Component	Feeds	How
+TPS Central Agent	Janet + Friday Package + Support Agent	Every update improves data quality — better intelligence, fewer support questions
+Friday Package	Janet	Weekly SharePoint artifacts become Janet's grounded knowledge source
+Janet	TPS Central Agent	Surfacing gaps creates urgency for TDs to update via the Agent
+Support Agent	All agents	Removing friction from "how do I" increases data volume and quality
+---
+Implementation Roadmap
+Phase	Timeline	Delivers	Gate
+1: Touchpoint Agent + Support Agent	Weeks 1-4	Layer 1 pilot. Support Agent to #tpscentral-support.	Classification >90%. Support Agent resolves >70% without escalation.
+2: TD Fields + Friday Package v1	Weeks 5-8	Layer 2. First automated Friday Package for pilot vertical.	+10% TD field completeness. Package is Monday-ready.
+3: NBA Read-Back + Janet Phase 1	Weeks 9-12	Layer 3. Janet SharePoint-grounded Q&A.	NBA completion 40%+. Janet answers 50+ questions/week.
+4: Scale + Intelligence	Q2	All verticals. Janet live data. Agent Layer 4.	Zero TPS Ops hours on reporting or routine support.
+---
+Success Metrics
+Metric	Baseline	Target (90 Days)
+Ops hours on reporting	15-20+/week	0/week
+Ops hours on support	5-8/week	0-1/week
+Friday delivery reliability	Manual	100% on-time
+Janet questions/week	0	50+
+Support resolution rate	0	>70% automated
+Touchpoint volume	Inconsistent	+30%
+TD field completeness	Varies	+10%
+Time-to-answer (ops questions)	Hours to days	<30 seconds
+Time-to-answer (support)	Minutes to hours	<10 seconds
+---
+June 2026 | Built by Beckie Cole, Director of Strategy and Business Operations, Technical Pre-Sales, Adobe
