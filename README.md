@@ -37,7 +37,7 @@ Currently building toward VP Revenue Operations and COO-level leadership, with a
 
 ## Connect
 
-[LinkedIn](https://www.linkedin.com/in/beckiecole) | Open to VP RevOps, Chief of Staff, and Head of GTM Operations roles.
+[https://www.linkedin.com/in/rcole-opsunleashed/]| Open to VP RevOps, Chief of Staff, and Head of GTM Operations roles.
 
 ---
 
