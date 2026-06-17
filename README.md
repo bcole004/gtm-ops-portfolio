@@ -7,8 +7,7 @@
 ## What This Is
 
 This repository is a working portfolio of operating model frameworks, AI-native GTM tools, and revenue operations artifacts built across enterprise and growth-stage environments.
-
-The through-line: turning organizations that run on intuition and tribal knowledge into systems that scale — strategy to operating model to execution to data to governance.
+The through-line: turning organizations that run on intuition and tribal knowledge into systems that scale. Strategy to operating model to execution to data to governance
 
 ---
 
