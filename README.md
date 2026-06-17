@@ -29,9 +29,9 @@ The through-line: turning organizations that run on intuition and tribal knowled
 
 ## Background
 
-11 years at Adobe leading Strategy & Business Operations for Technical Pre-Sales — a ~1,000-person global organization. Work spanned operating model design, AI-native systems, sales compensation governance (9-figure budget, ~7,000 commissionable employees), and transformation program leadership.
-
-Currently building toward VP Revenue Operations and COO-level leadership, with a focus on organizations that need their strategy made executable and their decisions made legible.
+11 years at Adobe leading Strategy & Business Operations for a ~1,000-person global Technical Pre-Sales organization. Work spanned operating model design, AI-native systems, sales compensation governance (9-figure budget, ~7,000 commissionable employees), and transformation program leadership.
+This portfolio documents how I build the operating backbone for enterprise GTM teams: strategy, data infrastructure, AI-first workflows, and the governance layer that makes it all defensible at scale.
+Currently targeting VP Revenue Operations and COO-level leadership, with a focus on organizations that need their strategy made executable and their decisions made legible.
 
 ---
 
